@@ -17,8 +17,7 @@ public class EmptyPricingEngineTests
 
     private void Given_that_I_initialize_the_currency_to_GBP_and_assign_no_rules()
     {
-        // Initialize the currency to GBP
-        _pricingExecutor = new PricingRulesExecutor();
+        _pricingExecutor = new PricingRulesExecutor(PricingRulesExecutor.Currency.GBP);
     }
 
     private void When_I_execute_the_pricing_rules()
@@ -33,20 +32,32 @@ public class EmptyPricingEngineTests
 
     private void Then_the_currency_is_GBP()
     {
-        Assert.Equal("GBP", _price.Currency);
+        Assert.Equal(PricingRulesExecutor.Currency.GBP, _price.Currency);
     }
 }
 
 public class PricingRulesExecutor
 {
+    public enum Currency
+    {
+        GBP
+    }
+
     public class Price
     {
         public int Amount { get; set; }
-        public string Currency { get; set; }
+        public Currency Currency { get; set; }
     }
- 
+
+    readonly Currency _currency;
+
+    public PricingRulesExecutor(Currency currency)
+    {
+        _currency = currency;
+    }
+
     public Price GetPrice()
     {
-        return new Price { Amount = 0, Currency = "GBP" };
+        return new Price { Amount = 0, Currency = _currency };
     }
 }
