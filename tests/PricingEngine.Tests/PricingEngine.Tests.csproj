@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\PricingEngine\PricingEngine.csproj" />
+    <ProjectReference Include="..\..\src\PricingEngine.Execution\PricingEngine.Execution.csproj" />
   </ItemGroup>
 
 </Project>

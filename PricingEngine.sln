@@ -1,11 +1,12 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{95A502C0-0772-46E8-AD8B-7DCB24FCA9EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PricingEngine", "src\PricingEngine\PricingEngine.csproj", "{978CD398-2F17-4F35-A9F2-B515E6D7AA07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PricingEngine.Execution", "src\PricingEngine.Execution\PricingEngine.Execution.csproj", "{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9A7E0B0C-6028-4D71-83C2-72B75386874E}"
 EndProject
@@ -24,6 +25,10 @@ Global
 		{978CD398-2F17-4F35-A9F2-B515E6D7AA07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{978CD398-2F17-4F35-A9F2-B515E6D7AA07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{978CD398-2F17-4F35-A9F2-B515E6D7AA07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30464252-382D-4088-B66F-5B5B865F0C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30464252-382D-4088-B66F-5B5B865F0C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30464252-382D-4088-B66F-5B5B865F0C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,6 +36,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{978CD398-2F17-4F35-A9F2-B515E6D7AA07} = {95A502C0-0772-46E8-AD8B-7DCB24FCA9EF}
+		{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0} = {95A502C0-0772-46E8-AD8B-7DCB24FCA9EF}
 		{30464252-382D-4088-B66F-5B5B865F0C82} = {9A7E0B0C-6028-4D71-83C2-72B75386874E}
 	EndGlobalSection
 EndGlobal

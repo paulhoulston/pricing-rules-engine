@@ -1,9 +1,13 @@
-﻿namespace PricingEngine.Tests;
+﻿using PricingEngine.Execution;
+
+namespace PricingEngine.Tests;
+
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 
 public class EmptyPricingEngineTests
 {
     private PricingRulesExecutor _pricingExecutor;
-
     private PricingRulesExecutor.Price _price;
 
     [Fact]
@@ -25,39 +29,18 @@ public class EmptyPricingEngineTests
         _price = _pricingExecutor.GetPrice();
     }
 
+    [System.Diagnostics.CodeAnalysis.MemberNotNull(nameof(_price))]
     private void Then_the_price_is_zero()
     {
         Assert.Equal(0, _price.Amount);
     }
 
+    [System.Diagnostics.CodeAnalysis.MemberNotNull(nameof(_price))]
     private void Then_the_currency_is_GBP()
     {
         Assert.Equal(PricingRulesExecutor.Currency.GBP, _price.Currency);
     }
 }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
-public class PricingRulesExecutor
-{
-    public enum Currency
-    {
-        GBP
-    }
-
-    public class Price
-    {
-        public int Amount { get; set; }
-        public Currency Currency { get; set; }
-    }
-
-    readonly Currency _currency;
-
-    public PricingRulesExecutor(Currency currency)
-    {
-        _currency = currency;
-    }
-
-    public Price GetPrice()
-    {
-        return new Price { Amount = 0, Currency = _currency };
-    }
-}
