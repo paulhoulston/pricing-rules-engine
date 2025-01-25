@@ -2,5 +2,5 @@
 
 public interface IAmAPricingRule
 {
-    void Apply(Price price, bool answer);
+    void Apply(Price price, object answer);
 }

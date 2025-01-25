@@ -10,7 +10,7 @@ public class PricingRulesExecutor
 
     public PricingRulesExecutor(Currency currency) => _currency = currency;
 
-    public Price CalculatePrice(bool answer = false)
+    public Price CalculatePrice(object answer = null)
     {
         var price = new Price(_currency);
 
