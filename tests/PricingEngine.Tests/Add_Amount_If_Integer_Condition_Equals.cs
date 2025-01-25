@@ -26,7 +26,11 @@ public class Add_Amount_If_Integer_Condition_Equality_Is_Matched
 
     void Given_there_is_a_rule_to_add_25_to_the_amount_if_the_answer_to_a_question_is_5()
     {
-        _pricingEngine.AddRule(new AddAmountIfConditionEquals<int>());
+        _pricingEngine.AddRule(new AddAmountIfConditionEquals<int>(new AddAmountIfConditionEquals<int>.Parameters
+        {
+            Condition = 5,
+            AmountDelta = 25
+        }));
     }
 
     void When_I_answer_the_question_with_5()
@@ -62,7 +66,11 @@ public class Dont_Add_Amount_If_Integer_Condition_Equality_Is_Not_Matched
 
     void Given_there_is_a_rule_to_add_25_to_the_amount_if_the_answer_to_a_question_is_5()
     {
-        _pricingEngine.AddRule(new AddAmountIfConditionEquals<int>());
+        _pricingEngine.AddRule(new AddAmountIfConditionEquals<int>(new AddAmountIfConditionEquals<int>.Parameters
+        {
+            Condition = 5,
+            AmountDelta = 25
+        }));
     }
 
     void When_I_answer_the_question_with_an_answer_other_than_5()

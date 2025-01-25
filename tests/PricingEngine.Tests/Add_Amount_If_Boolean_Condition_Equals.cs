@@ -27,7 +27,11 @@ public class Add_Amount_If_Bool_Condition_Equality_Is_Matched
 
     void Given_there_is_a_rule_to_add_10_to_the_amount_if_the_answer_to_a_question_is_true()
     {
-        _pricingEngine.AddRule(new AddAmountIfConditionEquals<bool>());
+        _pricingEngine.AddRule(new AddAmountIfConditionEquals<bool>(new AddAmountIfConditionEquals<bool>.Parameters
+        {
+            Condition = true,
+            AmountDelta = 10
+        }));
     }
 
     void When_I_answer_the_question_with_true()
@@ -63,7 +67,11 @@ public class Dont_Add_Amount_If_Boolean_Condition_Equality_Is_Not_Matched
 
     void Given_there_is_a_rule_to_add_10_to_the_amount_if_the_answer_to_a_question_is_true()
     {
-        _pricingEngine.AddRule(new AddAmountIfConditionEquals<bool>());
+        _pricingEngine.AddRule(new AddAmountIfConditionEquals<bool>(new AddAmountIfConditionEquals<bool>.Parameters
+        {
+            Condition = true,
+            AmountDelta = 10
+        }));
     }
 
     void When_I_answer_the_question_with_false()

@@ -2,21 +2,24 @@
 
 public class AddAmountIfConditionEquals<T> : IAmAPricingRule
 {
+    readonly Parameters _parameters;
+
+    public class Parameters
+    {
+        public T Condition { get; set; }
+        public int AmountDelta { get; set; }
+    }
+
+    public AddAmountIfConditionEquals(Parameters parameters)
+    {
+        _parameters = parameters;
+    }
+
     public void Apply(Price price, object answer)
     {
-        if (typeof(T) == typeof(bool))
+        if (answer.Equals(_parameters.Condition))
         {
-            if ((bool)answer)
-            {
-                price.Amount += 10;
-            }
-        }
-        else if (typeof(T) == typeof(int))
-        {
-            if ((int)answer == 5)
-            {
-                price.Amount += 25;
-            }
+            price.Amount += _parameters.AmountDelta;
         }
     }
 }
