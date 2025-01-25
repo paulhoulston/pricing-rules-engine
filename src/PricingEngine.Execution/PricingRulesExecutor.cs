@@ -1,26 +1,8 @@
 ﻿namespace PricingEngine.Execution;
 
-
 public class PricingRulesExecutor
 {
-    public enum Currency
-    {
-        GBP
-    }
-
     List<IAmAPricingRule> _rules = new();
-
-    public class Price
-    {
-        public Price(int amount, Currency currency)
-        {
-            Amount = amount;
-            Currency = currency;
-        }
-
-        public int Amount { get; set; }
-        public Currency Currency { get; private set; }
-    }
 
     readonly Currency _currency;
 
@@ -28,10 +10,10 @@ public class PricingRulesExecutor
 
     public Price GetPrice(bool answer = false)
     {
-        var price = new Price(0, _currency);
+        var price = new Price(_currency);
 
         _rules.ForEach(rule => rule.Apply(price, answer));
-        
+
         return price;
     }
 
@@ -45,7 +27,7 @@ public class PricingRulesExecutor
 
 public class AddAmountIfConditionEquals : PricingRulesExecutor.IAmAPricingRule
 {
-    public void Apply(PricingRulesExecutor.Price price, bool answer)
+    public void Apply(Price price, bool answer)
     {
         if (answer)
         {

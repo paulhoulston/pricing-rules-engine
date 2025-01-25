@@ -8,7 +8,7 @@ namespace PricingEngine.Tests;
 public class EmptyPricingEngineTests
 {
     private PricingRulesExecutor _pricingExecutor;
-    private PricingRulesExecutor.Price _price;
+    private Price _price;
 
     [Fact]
     public void Test_that_I_get_default_zero_price_when_no_rules_are_added()
@@ -21,7 +21,7 @@ public class EmptyPricingEngineTests
 
     private void Given_that_I_initialize_the_currency_to_GBP_and_assign_no_rules()
     {
-        _pricingExecutor = new PricingRulesExecutor(PricingRulesExecutor.Currency.GBP);
+        _pricingExecutor = new PricingRulesExecutor(Currency.GBP);
     }
 
     private void When_I_execute_the_pricing_rules()
@@ -38,7 +38,7 @@ public class EmptyPricingEngineTests
     [System.Diagnostics.CodeAnalysis.MemberNotNull(nameof(_price))]
     private void Then_the_currency_is_GBP()
     {
-        Assert.Equal(PricingRulesExecutor.Currency.GBP, _price.Currency);
+        Assert.Equal(Currency.GBP, _price.Currency);
     }
 }
 #pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
