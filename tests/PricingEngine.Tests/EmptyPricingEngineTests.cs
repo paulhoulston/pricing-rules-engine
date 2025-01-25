@@ -1,4 +1,5 @@
 ﻿using PricingEngine.Execution;
+using PricingEngine.Execution.Rules;
 
 namespace PricingEngine.Tests;
 
@@ -26,7 +27,7 @@ public class EmptyPricingEngineTests
 
     private void When_I_execute_the_pricing_rules()
     {
-        _price = _pricingExecutor.GetPrice();
+        _price = _pricingExecutor.CalculatePrice();
     }
 
     [System.Diagnostics.CodeAnalysis.MemberNotNull(nameof(_price))]

@@ -1,5 +1,7 @@
 using Xunit;
 using PricingEngine.Execution;
+using PricingEngine.Execution.Rules;
+
 
 namespace PricingEngine.Tests;
 
@@ -30,7 +32,7 @@ public class Add_Amount_If_Condition_Equality_Is_Matched
 
     void When_I_answer_the_question_with_true()
     {
-        _price = _pricingEngine.GetPrice(true);
+        _price = _pricingEngine.CalculatePrice(true);
     }
 
     [Fact]
@@ -66,7 +68,7 @@ public class Dont_Add_Amount_If_Condition_Equality_Is_Not_Matched
 
     void When_I_answer_the_question_with_false()
     {
-        _price = _pricingEngine.GetPrice(false);
+        _price = _pricingEngine.CalculatePrice(false);
     }
 
     [Fact]

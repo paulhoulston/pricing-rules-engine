@@ -1,4 +1,6 @@
-﻿namespace PricingEngine.Execution;
+﻿using PricingEngine.Execution.Rules;
+
+namespace PricingEngine.Execution;
 
 public class PricingRulesExecutor
 {
@@ -8,7 +10,7 @@ public class PricingRulesExecutor
 
     public PricingRulesExecutor(Currency currency) => _currency = currency;
 
-    public Price GetPrice(bool answer = false)
+    public Price CalculatePrice(bool answer = false)
     {
         var price = new Price(_currency);
 
@@ -18,20 +20,4 @@ public class PricingRulesExecutor
     }
 
     public void AddRule(IAmAPricingRule rule) => _rules.Add(rule);
-
-    public interface IAmAPricingRule
-    {
-        void Apply(Price price, bool answer);
-    }
-}
-
-public class AddAmountIfConditionEquals : PricingRulesExecutor.IAmAPricingRule
-{
-    public void Apply(Price price, bool answer)
-    {
-        if (answer)
-        {
-            price.Amount += 10;
-        }
-    }
 }
