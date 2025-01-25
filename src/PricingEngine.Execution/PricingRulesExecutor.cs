@@ -8,6 +8,8 @@ public class PricingRulesExecutor
         GBP
     }
 
+    List<Action<Price>> _rules = new();
+
     public class Price
     {
         public Price(int amount, Currency currency)
@@ -16,7 +18,7 @@ public class PricingRulesExecutor
             Currency = currency;
         }
 
-        public int Amount { get; private set; }
+        public int Amount { get; set; }
         public Currency Currency { get; private set; }
     }
 
@@ -24,8 +26,17 @@ public class PricingRulesExecutor
 
     public PricingRulesExecutor(Currency currency) => _currency = currency;
 
-    public Price GetPrice()
+    public Price GetPrice(bool answer = false)
     {
-        return new Price(0, _currency );
+        var price = new Price(0, _currency);
+
+        _rules.ForEach(rule => rule(price));
+        
+        return price;
+    }
+
+    public void AddRule(Action<Price> rule)
+    {
+        _rules.Add(rule);
     }
 }
