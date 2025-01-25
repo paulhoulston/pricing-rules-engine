@@ -6,13 +6,12 @@ namespace PricingEngine.Tests;
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 
-public class EmptyPricingEngineTests
+public class Price_is_set_to_zero_and_specified_currency_when_no_rules_are_added
 {
     private PricingRulesExecutor _pricingExecutor;
     private Price _price;
 
-    [Fact]
-    public void Test_that_I_get_default_zero_price_when_no_rules_are_added()
+    public Price_is_set_to_zero_and_specified_currency_when_no_rules_are_added()
     {
         Given_that_I_initialize_the_currency_to_GBP_and_assign_no_rules();
         When_I_execute_the_pricing_rules();
@@ -30,13 +29,13 @@ public class EmptyPricingEngineTests
         _price = _pricingExecutor.CalculatePrice();
     }
 
-    [System.Diagnostics.CodeAnalysis.MemberNotNull(nameof(_price))]
+    [Fact]
     private void Then_the_price_is_zero()
     {
         Assert.Equal(0, _price.Amount);
     }
 
-    [System.Diagnostics.CodeAnalysis.MemberNotNull(nameof(_price))]
+    [Fact]
     private void Then_the_currency_is_GBP()
     {
         Assert.Equal(Currency.GBP, _price.Currency);
