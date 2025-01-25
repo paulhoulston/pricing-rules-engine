@@ -7,7 +7,7 @@ public class AddAmountIfConditionEquals<T> : IAmAPricingRule
     public class Parameters
     {
         public T Condition { get; set; }
-        public int AmountDelta { get; set; }
+        public decimal AmountDelta { get; set; }
     }
 
     public AddAmountIfConditionEquals(Parameters parameters)
