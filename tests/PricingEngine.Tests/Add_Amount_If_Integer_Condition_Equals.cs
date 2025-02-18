@@ -28,6 +28,7 @@ public class Add_Amount_If_Integer_Condition_Equality_Is_Matched
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<int>(new AddAmountIfConditionEquals<int>.Parameters
         {
+            QuestionId = 1,
             Condition = 5,
             AmountDelta = 25
         }));
@@ -35,7 +36,7 @@ public class Add_Amount_If_Integer_Condition_Equality_Is_Matched
 
     void When_I_answer_the_question_with_5()
     {
-        _price = _pricingEngine.CalculatePrice(5);
+        _price = _pricingEngine.CalculatePrice(new Answer(1, 5));
     }
 
     [Fact]
@@ -68,6 +69,7 @@ public class Dont_Add_Amount_If_Integer_Condition_Equality_Is_Not_Matched
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<int>(new AddAmountIfConditionEquals<int>.Parameters
         {
+            QuestionId = 1,
             Condition = 5,
             AmountDelta = 25
         }));
@@ -75,7 +77,7 @@ public class Dont_Add_Amount_If_Integer_Condition_Equality_Is_Not_Matched
 
     void When_I_answer_the_question_with_an_answer_other_than_5()
     {
-        _price = _pricingEngine.CalculatePrice(4);
+        _price = _pricingEngine.CalculatePrice(new Answer(1, 4));
     }
 
     [Fact]

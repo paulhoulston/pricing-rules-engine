@@ -10,11 +10,11 @@ public class PricingRulesExecutor
 
     public PricingRulesExecutor(Currency currency) => _currency = currency;
 
-    public Price CalculatePrice(object answer = null)
+    public Price CalculatePrice(params Answer[] answers)
     {
         var price = new Price(_currency);
 
-        _rules.ForEach(rule => rule.Apply(price, answer));
+        _rules.ForEach(rule => rule.Apply(price, answers));
 
         return price;
     }

@@ -29,6 +29,7 @@ public class Add_Amount_If_Bool_Condition_Equality_Is_Matched
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<bool>(new AddAmountIfConditionEquals<bool>.Parameters
         {
+            QuestionId = 1,
             Condition = true,
             AmountDelta = 10
         }));
@@ -36,7 +37,7 @@ public class Add_Amount_If_Bool_Condition_Equality_Is_Matched
 
     void When_I_answer_the_question_with_true()
     {
-        _price = _pricingEngine.CalculatePrice(true);
+        _price = _pricingEngine.CalculatePrice(new Answer(1, true));
     }
 
     [Fact]
@@ -69,6 +70,7 @@ public class Dont_Add_Amount_If_Boolean_Condition_Equality_Is_Not_Matched
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<bool>(new AddAmountIfConditionEquals<bool>.Parameters
         {
+            QuestionId = 1,
             Condition = true,
             AmountDelta = 10
         }));
@@ -76,7 +78,7 @@ public class Dont_Add_Amount_If_Boolean_Condition_Equality_Is_Not_Matched
 
     void When_I_answer_the_question_with_false()
     {
-        _price = _pricingEngine.CalculatePrice(false);
+        _price = _pricingEngine.CalculatePrice(new Answer(1, false));
     }
 
     [Fact]
