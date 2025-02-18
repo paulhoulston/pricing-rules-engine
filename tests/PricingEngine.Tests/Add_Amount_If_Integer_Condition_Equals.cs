@@ -8,6 +8,7 @@ namespace PricingEngine.Tests;
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 public class Add_Amount_If_Integer_Condition_Equality_Is_Matched
 {
+    readonly Guid _questionId1 = Guid.NewGuid();
     PricingRulesExecutor _pricingEngine;
     Price _price;
 
@@ -28,7 +29,7 @@ public class Add_Amount_If_Integer_Condition_Equality_Is_Matched
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<int>(new AddAmountIfConditionEquals<int>.Parameters
         {
-            QuestionId = 1,
+            QuestionId = _questionId1,
             Condition = 5,
             AmountDelta = 25
         }));
@@ -36,7 +37,7 @@ public class Add_Amount_If_Integer_Condition_Equality_Is_Matched
 
     void When_I_answer_the_question_with_5()
     {
-        _price = _pricingEngine.CalculatePrice(new Answer(1, 5));
+        _price = _pricingEngine.CalculatePrice(new Answer(_questionId1, 5));
     }
 
     [Fact]
@@ -49,6 +50,8 @@ public class Add_Amount_If_Integer_Condition_Equality_Is_Matched
 
 public class Dont_Add_Amount_If_Integer_Condition_Equality_Is_Not_Matched
 {
+    readonly Guid _questionId1 = Guid.NewGuid();
+
     PricingRulesExecutor _pricingEngine;
     Price _price;
 
@@ -69,7 +72,7 @@ public class Dont_Add_Amount_If_Integer_Condition_Equality_Is_Not_Matched
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<int>(new AddAmountIfConditionEquals<int>.Parameters
         {
-            QuestionId = 1,
+            QuestionId = _questionId1,
             Condition = 5,
             AmountDelta = 25
         }));
@@ -77,7 +80,7 @@ public class Dont_Add_Amount_If_Integer_Condition_Equality_Is_Not_Matched
 
     void When_I_answer_the_question_with_an_answer_other_than_5()
     {
-        _price = _pricingEngine.CalculatePrice(new Answer(1, 4));
+        _price = _pricingEngine.CalculatePrice(new Answer(_questionId1, 4));
     }
 
     [Fact]

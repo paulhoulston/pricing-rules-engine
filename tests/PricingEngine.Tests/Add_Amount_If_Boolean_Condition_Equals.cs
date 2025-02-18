@@ -9,9 +9,10 @@ namespace PricingEngine.Tests;
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 public class Add_Amount_If_Bool_Condition_Equality_Is_Matched
 {
+    readonly Guid _questionId1 = Guid.NewGuid();
     PricingRulesExecutor _pricingEngine;
     Price _price;
-    
+
     public Add_Amount_If_Bool_Condition_Equality_Is_Matched()
     {
         Given_that_I_have_a_pricing_engine_set_to_use_GBP();
@@ -19,7 +20,7 @@ public class Add_Amount_If_Bool_Condition_Equality_Is_Matched
         When_I_answer_the_question_with_true();
         Then_the_amount_is_increased_by_10();
     }
-    
+
     void Given_that_I_have_a_pricing_engine_set_to_use_GBP()
     {
         _pricingEngine = new PricingRulesExecutor(Currency.GBP);
@@ -29,7 +30,7 @@ public class Add_Amount_If_Bool_Condition_Equality_Is_Matched
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<bool>(new AddAmountIfConditionEquals<bool>.Parameters
         {
-            QuestionId = 1,
+            QuestionId = _questionId1,
             Condition = true,
             AmountDelta = 10
         }));
@@ -37,7 +38,7 @@ public class Add_Amount_If_Bool_Condition_Equality_Is_Matched
 
     void When_I_answer_the_question_with_true()
     {
-        _price = _pricingEngine.CalculatePrice(new Answer(1, true));
+        _price = _pricingEngine.CalculatePrice(new Answer(_questionId1, true));
     }
 
     [Fact]
@@ -50,9 +51,10 @@ public class Add_Amount_If_Bool_Condition_Equality_Is_Matched
 
 public class Dont_Add_Amount_If_Boolean_Condition_Equality_Is_Not_Matched
 {
+    readonly Guid _questionId1 = Guid.NewGuid();
     PricingRulesExecutor _pricingEngine;
     Price _price;
-    
+
     public Dont_Add_Amount_If_Boolean_Condition_Equality_Is_Not_Matched()
     {
         Given_that_I_have_a_pricing_engine_set_to_use_GBP();
@@ -60,7 +62,7 @@ public class Dont_Add_Amount_If_Boolean_Condition_Equality_Is_Not_Matched
         When_I_answer_the_question_with_false();
         Then_the_amount_is_unchanged();
     }
-    
+
     void Given_that_I_have_a_pricing_engine_set_to_use_GBP()
     {
         _pricingEngine = new PricingRulesExecutor(Currency.GBP);
@@ -70,7 +72,7 @@ public class Dont_Add_Amount_If_Boolean_Condition_Equality_Is_Not_Matched
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<bool>(new AddAmountIfConditionEquals<bool>.Parameters
         {
-            QuestionId = 1,
+            QuestionId = _questionId1,
             Condition = true,
             AmountDelta = 10
         }));
@@ -78,7 +80,7 @@ public class Dont_Add_Amount_If_Boolean_Condition_Equality_Is_Not_Matched
 
     void When_I_answer_the_question_with_false()
     {
-        _price = _pricingEngine.CalculatePrice(new Answer(1, false));
+        _price = _pricingEngine.CalculatePrice(new Answer(_questionId1, false));
     }
 
     [Fact]

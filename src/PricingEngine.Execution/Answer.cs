@@ -1,13 +1,15 @@
 namespace PricingEngine.Execution;
 
+using System;
+
 public class Answer
 {
-    public Answer(int questionId, object value)
+    public Answer(Guid questionId, object value)
     {
         QuestionId = questionId;
         Value = value;
     }
 
-    public int QuestionId { get; private set; }
+    public Guid QuestionId { get; private set; }
     public object Value { get; private set; }
 }

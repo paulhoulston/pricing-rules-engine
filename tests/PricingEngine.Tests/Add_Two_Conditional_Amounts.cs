@@ -10,6 +10,9 @@ namespace PricingEngine.Tests;
 
 public class Add_Two_Conditional_Amounts
 {
+    readonly Guid _questionId1 = Guid.NewGuid();
+    readonly Guid _questionId2 = Guid.NewGuid();
+
     PricingRulesExecutor _pricingEngine;
     Price _price;
 
@@ -34,7 +37,7 @@ public class Add_Two_Conditional_Amounts
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<bool>(new AddAmountIfConditionEquals<bool>.Parameters
         {
-            QuestionId = 1,
+            QuestionId = _questionId1,
             Condition = true,
             AmountDelta = 10
         }));
@@ -44,7 +47,7 @@ public class Add_Two_Conditional_Amounts
     {
         _pricingEngine.AddRule(new AddAmountIfConditionEquals<int>(new AddAmountIfConditionEquals<int>.Parameters
         {
-            QuestionId = 2,
+            QuestionId = _questionId2,
             Condition = 5,
             AmountDelta = 25
         }));
@@ -53,8 +56,8 @@ public class Add_Two_Conditional_Amounts
     void When_I_answer_the_question_1_with_true_AND_I_answer_the_question_2_with_5()
     {
         _price = _pricingEngine.CalculatePrice(
-            new Answer(1, true),
-            new Answer(2, 5));
+            new Answer(_questionId1, true),
+            new Answer(_questionId2, 5));
     }
 
     [Fact]

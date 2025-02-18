@@ -1,6 +1,7 @@
 ﻿namespace PricingEngine.Execution.Rules;
 
 using PricingEngine.Execution;
+using System;
 
 public class AddAmountIfConditionEquals<T> : IAmAPricingRule
 {
@@ -8,7 +9,7 @@ public class AddAmountIfConditionEquals<T> : IAmAPricingRule
 
     public class Parameters
     {
-        public int QuestionId { get; set; }
+        public Guid QuestionId { get; set; }
         public T Condition { get; set; }
         public decimal AmountDelta { get; set; }
     }
